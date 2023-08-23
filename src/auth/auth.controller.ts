@@ -16,7 +16,8 @@ export class AuthController {
             throw new UnauthorizedException('Invalid credentials');
         }
 
-        return { message: 'Login successful' };
+        const tokenResponse = await this.authService.login(username, password);
+        return tokenResponse; 
     }
     
     @Post('register')
